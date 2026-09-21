@@ -4,6 +4,19 @@ const jobs = [
 ];
 const http = require("http");
 const server = http.createServer((req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS",
+  );
+
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") {
+    res.statusCode = 204;
+    res.end();
+    return;
+  }
+
   let parts = [];
   let id = 0;
   if (req.method == "GET" && req.url == "/jobs") {
@@ -70,10 +83,10 @@ const server = http.createServer((req, res) => {
     } else {
       let body = "";
       req.on("data", (chunk) => {
-        body = bode + chunk.toString();
+        body = body + chunk.toString();
       });
-      let updatedjob = JSON.parse(body);
       req.on("end", () => {
+        let updatedjob = JSON.parse(body);
         jobs[index] = { id: id, ...updatedjob };
       });
       res.statusCode = 200;
