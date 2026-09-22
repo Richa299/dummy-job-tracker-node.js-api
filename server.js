@@ -19,6 +19,7 @@ const server = http.createServer((req, res) => {
 
   let parts = [];
   let id = 0;
+
   if (req.method == "GET" && req.url == "/jobs") {
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
@@ -99,11 +100,3 @@ const server = http.createServer((req, res) => {
   }
 });
 server.listen(3000);
-
-// createServer is a method from http
-//any name could be given to this particular file
-// req and res are objects provided by nodejs callback
-// res - to send response back to client
-// end()- end/finish the response and send it.
-// end()- expects a string
-// setHeader- sets the header of the response

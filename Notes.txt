@@ -1,0 +1,25 @@
+require-> is used to load the module in to application.
+
+http-> node.js builtin module for creating the server.
+
+createServer is a method from http module.
+
+then server.listens()/ listens to the particular port when we start the node.js application.(node server.js) and 
+server.listens() runs once during the setup.
+
+then it starts listening to the request comes to that port
+
+any name could be given to this particular file.
+
+req and res are objects provided by nodejs callback.
+
+res - to send response back to client
+
+setHeader- sets the header of the response
+
+end()- end/finish the response and send it and it expects a string thats why we nee dto stringify the data.
+
+for CORS error, we need to handle it via- origin, method and headers (not always necessary to handle all these three as it depends on the request).
+
+OPTIONS- is a request which is being sent by the browser, to ask server if the particular request can be made or not/permission.
+-this is what we call as preflight request
